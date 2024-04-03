@@ -4,7 +4,7 @@ import Home from "@/views/Home.vue";
 const routes = [
   {
     path: "/",
-    name: "home",
+    name: "Home",
     component: Home,
   },
   {
@@ -25,15 +25,6 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
         import(/* webpackChunkName: "update" */ "../views/Update.vue"),
-  },
-  {
-    path: "/delete/:id",
-    name: "Delete",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-        import(/* webpackChunkName: "delete" */ "../views/Delete.vue"),
   },
 ];
 

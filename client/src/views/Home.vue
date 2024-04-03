@@ -1,11 +1,13 @@
 <template>
-  <div>
-    <p>QWRQW</p>
-  </div>
+  <PostList/>
 </template>
 
 <script>
-export default {}
+import PostList from "@/components/PostList.vue";
+
+export default {
+  components: {PostList}
+}
 
 </script>
 

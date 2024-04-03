@@ -15,8 +15,8 @@
       </div>
       <div class="card">
         <footer class="card-footer">
-          <a @click="updatePosts(post.id)" class="card-footer-item button is-success">Edit</a>
-          <a @click="deletePosts(post.id)" class="card-footer-item button is-danger">Delete</a>
+          <a @click="updatePosts(post._id)" class="card-footer-item button is-success">Update</a>
+          <a @click="deletePosts(post._id)" class="card-footer-item button is-danger">Delete</a>
         </footer>
       </div>
     </div>
@@ -42,7 +42,6 @@ export default {
       try {
         let response = await fetch(API_URL+"/all");
         postes.value = await response.json();
-
       } catch (e) {
         alert(e.message)
       }
@@ -50,22 +49,20 @@ export default {
 
     async function deletePosts(id) {
       try {
-        let response = await fetch(API_URL+"/"+id, {method: 'DELETE'});
+        await fetch(API_URL+"/"+id, {method: 'DELETE'});
         location.reload();
       } catch (e) {
         console.log(e.message)
       }
     }
 
-    async function updatePosts(id) {
-      try {
-        await fetch(API_URL+"/"+id, {method: 'PUT'});
-
-        await router.push({name: 'Edit', params: {id: id}})
-
-      } catch (e) {
-        alert(e.message)
-      }
+    async function updatePosts(_id) {
+      await router.push({
+        name: 'Update',
+        params: {
+          id: _id,
+        },
+      })
     }
 
     return{postes,deletePosts,updatePosts}

@@ -27,7 +27,7 @@
           <button class="button is-link">Submit</button>
         </div>
         <div class="control">
-          <button class="button is-link is-light">Cancel</button>
+          <button @click="cancel" class="button is-link is-light">Cancel</button>
         </div>
       </div>
     </form>
@@ -36,7 +36,12 @@
 
 <script>
 export default {
-  props: ['post', 'submitForm']
+  props: ['post', 'submitForm'],
+  methods: {
+    cancel() {
+      this.$router.push({ name: 'Home' });
+    }
+  }
 }
 </script>
 
